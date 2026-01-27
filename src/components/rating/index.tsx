@@ -11,11 +11,11 @@ export function Rating (props: RatingProps) {
 
   const starts = Array.from({ length: max }).map((_, index) => {
 
-    if (value >= index + 1) return <Star key={index} />
+    if (value >= index + 1) return <Star data-testid="star" key={index} />
     
-    if (value > index && value < index + 1) return <StarHalf key={index} />
+    if (value > index && value < index + 1) return <StarHalf data-testid="star-half" key={index} />
 
-    return <span key={index} className="opacity-30"><Star /></span>
+    return <span key={index} className="opacity-30"><Star data-testid="star" /></span>
   })
 
   return (
