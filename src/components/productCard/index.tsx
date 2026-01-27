@@ -1,6 +1,6 @@
 import { cn } from "../../lib/tailwind"
 import { toCurrency } from "../../lib/toCurrency"
-import { Rating } from "../Rating"
+import { Rating } from ".."
 import Shopping from '@/assets/shopping.svg?react'
 
 interface ImageProps {
@@ -36,7 +36,9 @@ export function ProductCard (props: ProductCardProps) {
     )}>
       <div className="min-w-36 min-h-36 bg-surface-low-contrast relative overflow-hidden rounded-sm">
         {badge && (
-          <span className="text-surface bg-primary caption--regular w-full absolute top-0 left-0 text-center">{badge}</span>
+          <span 
+            className="text-surface bg-primary caption--regular w-full absolute top-0 left-0 text-center"
+          >{badge}</span>
         )}
         {image && (
           <img 
@@ -54,9 +56,15 @@ export function ProductCard (props: ProductCardProps) {
         <div className="flex flex-col gap-2">
           <div className="flex flex-col gap-1">
             {originalPrice && (
-              <span className="text-xs font-400 text-surface-contrast line-through">{toCurrency(originalPrice)}</span>
+              <span 
+                className="text-xs font-400 text-surface-contrast line-through"
+                aria-label={`Preço original: ${toCurrency(originalPrice)}`}
+              >{toCurrency(originalPrice)}</span>
             )}
-            <span className="body-small--bold text-surface-contrast">{toCurrency(price)}</span>
+            <span 
+              className="body-small--bold text-surface-contrast"
+              aria-label={`Preço atual: ${toCurrency(price)}`}
+            >{toCurrency(price)}</span>
           </div>
           <Rating value={rating} max={5} />
         </div>
