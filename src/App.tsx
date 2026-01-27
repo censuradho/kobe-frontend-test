@@ -19,7 +19,7 @@ function App() {
             <Close />
           </button>
         </header>
-        <div className="flex flex-1 flex-col gap-4 py-6 overflow-y-auto">
+        <div className="flex flex-1 flex-col gap-4 py-6 pr-4 overflow-y-auto">
           <ChatFactory {...chat} />
         </div>
         <form onSubmit={event => {
