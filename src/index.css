@@ -30,7 +30,7 @@
   --primary: #B9D8E1;
 }
 
-body {
+.app {
   background: var(--color-background);
   color: var(--color-neutral-10);
   font-family: 'Inter', sans-serif;
