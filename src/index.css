@@ -31,7 +31,6 @@
 }
 
 .app {
-  background: var(--color-background);
   color: var(--color-neutral-10);
   font-family: 'Inter', sans-serif;
 }
