@@ -17,6 +17,11 @@ export default defineConfig({
     tailwindcss(),
     svgr()
   ],
+  test: {
+    environment: 'jsdom',
+    setupFiles: ['./vitest-setup.js'],
+    globals: true,
+  },
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
