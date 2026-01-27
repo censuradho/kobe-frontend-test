@@ -1,5 +1,5 @@
 import { render, screen, waitFor } from "@testing-library/react";
-import { ProductFactory } from "./productFactory";
+import { ProductFactory } from "./ProductFactory";
 import type { ProductSuggestion } from "@/models/chat";
 import { describe, expect, it } from "vitest";
 

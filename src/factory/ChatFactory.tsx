@@ -8,11 +8,11 @@ import { Fragment, useEffect, useRef, type ReactNode } from "react";
 import {
   AgentBubble,
   TypingIndicator,
-  userBubble,
+  UserBubble,
   type AgentBubbleProps
 } from "@/components";
 import type { UseChatReturn } from "@/hooks/useChat";
-import { ProductFactory } from "./productFactory";
+import { ProductFactory } from "./ProductFactory";
 
 type ExtraPropsMap = {
   agent: Partial<AgentBubbleProps>
@@ -25,7 +25,7 @@ const components: {
   ) => ReactNode | null
 } = {
   user: (event) => (
-    <userBubble 
+    <UserBubble 
       message={event.text} 
     />
   ),
