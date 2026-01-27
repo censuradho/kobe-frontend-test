@@ -24,7 +24,7 @@ export function ProductCard (props: ProductCardProps) {
     originalPrice, 
     image, 
     rating = 0,
-    badge = "Lançamento"
+    badge
   } = props
 
   return (
