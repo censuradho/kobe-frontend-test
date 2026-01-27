@@ -19,7 +19,10 @@ export function Rating (props: RatingProps) {
   })
 
   return (
-    <div className="flex items-center">
+    <div 
+      className="flex items-center"
+      aria-label={`Avaliação: ${value} de ${max}`}
+    >
       {starts}
     </div>
   )
