@@ -24,7 +24,7 @@ export function TextField (props: TextFieldProps) {
     <div className="relative flex items-center">
       <input
         className={cn(
-          'w-full p-2 border-surface-contrast border rounded-xl px-4',
+          'w-full p-2 bg-neutral-100 border border-surface-contrast rounded-xl px-4',
         )}
         aria-label={label}
         id={id}
