@@ -15,6 +15,7 @@ interface ProductCardProps {
   image?: ImageProps
   rating?: number
   badge?: string
+  className?: string
 }
 
 export function ProductCard (props: ProductCardProps) {
@@ -24,15 +25,17 @@ export function ProductCard (props: ProductCardProps) {
     originalPrice, 
     image, 
     rating = 0,
-    badge
+    badge,
+    className = ""
   } = props
 
   return (
     <article className={cn(
-      'bg-neutral-100 p-3 w-full max-w-86.5 rounded-xl',
+      'bg-neutral-100 p-3 w-full md:max-w-86.5 rounded-xl',
       'flex gap-2 items-start',
-      'md:flex-col md:max-w-[168px]',
+      'md:flex-col md:max-w-[168px] transition-opacity duration-500',
       'overflow-hidden',
+      className
     )}>
       <div className="min-w-36 min-h-36 bg-surface-low-contrast relative overflow-hidden rounded-sm">
         {badge && (
