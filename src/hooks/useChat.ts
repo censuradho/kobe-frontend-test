@@ -44,6 +44,7 @@ export function useChat () {
     chat: filteredChat,
     onAgentNext,
     onUserNext,
+    next,
   }
 }
 
