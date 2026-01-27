@@ -27,6 +27,7 @@ function App() {
           chat.onUserNext()
         }}>
           <TextField 
+            disabled={chat.next?.type !== 'user'}
             label="Pergunte"
             placeholder="pergunte qualquer coisa"
           />
