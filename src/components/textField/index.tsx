@@ -8,7 +8,8 @@ interface TextFieldProps extends
   'onChange' | 
   'placeholder' | 
   'type' | 
-  'id' 
+  'id' | 
+  'disabled'
   > {
     label: string
   }
@@ -32,6 +33,7 @@ export function TextField (props: TextFieldProps) {
       />
       <button 
         className="absolute right-4 cursor-pointer" aria-label="Enviar"
+        disabled={props.disabled}
       >
         <Send  />
       </button>
