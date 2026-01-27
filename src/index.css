@@ -23,9 +23,9 @@
   --neutral-100: #1f1f1f;
   
   --surface: #000;
-  --surface-contrast: var(--color-neutral-10);
-  --surface-low-contrast: var(--color-neutral-80);
-  --surface-mid-contrast: var(--color-neutral-50);
+  --surface-contrast: var(--neutral-10);
+  --surface-low-contrast: var(--neutral-80);
+  --surface-mid-contrast: var(--neutral-50);
   --background: var(--surface);
   --primary: #B9D8E1;
 }
