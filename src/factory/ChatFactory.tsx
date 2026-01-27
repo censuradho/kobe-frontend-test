@@ -8,7 +8,7 @@ import { Fragment, useEffect, useRef, type ReactNode } from "react";
 import {
   AgentBubble,
   TypingIndicator,
-  UserMessageBubble,
+  userBubble,
   type AgentBubbleProps
 } from "@/components";
 import type { UseChatReturn } from "@/hooks/useChat";
@@ -25,7 +25,7 @@ const components: {
   ) => ReactNode | null
 } = {
   user: (event) => (
-    <UserMessageBubble 
+    <userBubble 
       message={event.text} 
     />
   ),

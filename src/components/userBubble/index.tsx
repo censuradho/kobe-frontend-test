@@ -1,9 +1,9 @@
 
-export interface UserMessageBubbleProps {
+export interface userBubbleProps {
   message: string;
 }
 
-export function UserMessageBubble (props: UserMessageBubbleProps) {
+export function userBubble (props: userBubbleProps) {
   const { message } = props;
 
   return (
