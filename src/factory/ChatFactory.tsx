@@ -46,6 +46,7 @@ const components: {
 
 export function ChatFactory(chats: UseChatReturn): ReactNode | null {
   const { chat, onAgentNext } = chats;
+
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -56,9 +57,7 @@ export function ChatFactory(chats: UseChatReturn): ReactNode | null {
     <Fragment key={event.id}>
       {components[event.type]?.(event as any, {
         agent: {
-          onComplete: () => {
-            onAgentNext()
-          },
+          onComplete: onAgentNext,
         },
       }) ?? null}
       <div ref={ref} />
