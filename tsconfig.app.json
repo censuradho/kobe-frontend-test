@@ -29,5 +29,5 @@
       "@/*": ["src/*"]
     }
   },
-  "include": ["src", "src/@types"]
+  "include": ["src", "src/@types", "@testing-library/jest-dom"]
 }
