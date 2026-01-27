@@ -1,34 +1,38 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { TextField } from "./components"
+import { ChatFactory } from "./factory/ChatFactory"
+import { useChat } from "./hooks/useChat"
+import { cn } from "./lib/tailwind"
+
+import Close from '@/assets/close.svg?react'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const chat = useChat()
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <div className="w-full h-dvh flex flex-col justify-center items-center">
+      <main className={cn(
+        'app px-4 pb-4 flex flex-col',
+        'md:h-175 md:w-full md:max-w-268.5 md:rounded-[14px]'
+      )}>
+        <header className="w-full px-4 py-2.5 flex items-center justify-end">
+          <button className="cursor-pointer">
+            <Close />
+          </button>
+        </header>
+        <div className="flex flex-1 flex-col gap-4 py-6 overflow-y-auto">
+          <ChatFactory {...chat} />
+        </div>
+        <form onSubmit={event => {
+          event.preventDefault()
+          chat.onUserNext()
+        }}>
+          <TextField 
+            label="Pergunte"
+            placeholder="pergunte qualquer coisa"
+          />
+        </form>
+      </main>
+    </div>
   )
 }
 
