@@ -11,18 +11,42 @@ export function Rating (props: RatingProps) {
 
   const starts = Array.from({ length: max }).map((_, index) => {
 
-    if (value >= index + 1) return <Star data-testid="star" key={index} />
+    if (value >= index + 1) return (
+      <Star 
+        aria-hidden="true"
+        data-testid="star" 
+        key={index} 
+      />
+    )
     
-    if (value > index && value < index + 1) return <StarHalf data-testid="star-half" key={index} />
+    if (value > index && value < index + 1) return (
+      <StarHalf 
+        data-testid="star-half" 
+        key={index} 
+        aria-hidden="true"
+      />
+    )
 
-    return <span key={index} className="opacity-30"><Star data-testid="star" /></span>
+    return (
+      <span  
+        key={index} 
+        className="opacity-30"
+        aria-hidden="true"
+      ><Star data-testid="star" />
+      </span>
+    )
   })
 
   return (
-    <div 
-      className="flex items-center"
-      aria-label={`Avaliação: ${value} de ${max}`}
-    >
+    <div className="flex items-center bg-none appearance-none none">
+      <meter 
+        min={0}
+        max={max}
+        value={value}
+        className='sr-only'
+        aria-label={`Avaliação: ${value} de ${max}`}
+      >
+      </meter>
       {starts}
     </div>
   )
