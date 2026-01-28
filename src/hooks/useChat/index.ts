@@ -1,18 +1,15 @@
 import { mockChat } from "@/mocks/products";
 import type { ChatEvent, ChatEventType } from "@/models/chat";
 import { useCallback, useState } from "react";
-import { useDelay, type IDelay } from "../useDelay";
+import { useDelay as useCustomDelay, type IDelay } from "../useDelay";
 
 interface UseChatOptions {
   useDelay: IDelay
   data?: ChatEvent[]
 }
 
-export function useChat (props: UseChatOptions = { 
-  useDelay: useDelay,
-  data: mockChat
-}) {
-  const { useDelay, data } = props;
+export function useChat (props?: UseChatOptions) {
+  const { useDelay = useCustomDelay, data = mockChat } = props || {};
 
   const [step, setStep] = useState(0)
 
@@ -29,16 +26,20 @@ export function useChat (props: UseChatOptions = {
   }, []);
 
   const onAgentNext = () => {
-    const isUserTurn = step > 1 && next?.type === 'user'
+    const isNextUserTurn = step > 1 && next?.type === 'user'
 
-    if (isLastChat || isUserTurn) return;
+    if (isLastChat || isNextUserTurn) return;
     setStep(s => s + 1);
   }
 
   const onUserNext = () => {
-    const isNotUserTurn =  next?.type !== 'user'
+    const isNotUserNextTurn =  next?.type !== 'user'
 
-    if (isLastChat || isNotUserTurn) return;
+    if (
+      isLastChat || 
+      isNotUserNextTurn
+    ) return;
+
     setStep(s => s + 1);
   }
   
@@ -58,6 +59,7 @@ export function useChat (props: UseChatOptions = {
     onAgentNext,
     onUserNext,
     next,
+    current
   }
 }
 
