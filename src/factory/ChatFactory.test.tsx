@@ -6,6 +6,12 @@ import { describe, expect, it, vi } from "vitest";
 HTMLElement.prototype.scrollIntoView = vi.fn();
 describe("ChatFactory", () => {
   const baseChat: UseChatReturn = {
+    current: {
+      id: "1",
+      type: "agent",
+      text: "Olá!",
+      timestamp: 2,
+    },
     next: {
       id: "2",
       type: "agent",
