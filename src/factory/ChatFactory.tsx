@@ -18,12 +18,14 @@ type ExtraPropsMap = {
   agent: Partial<AgentBubbleProps>
 }
 
-const components: {
+type Component = {
   [K in ChatEventType]: (
     event: Extract<ChatEvent, { type: K }>,
     extraProps?: ExtraPropsMap
   ) => ReactNode | null
-} = {
+}
+
+const components: Component = {
   user: (event) => (
     <UserBubble 
       message={event.text} 
