@@ -26,7 +26,7 @@ export function AgentBubble(props: AgentBubbleProps) {
   
   return (
     <p 
-      className="w-full body-small--light" 
+      className="w-full body-small--light max-w-[290px] sm:max-w-max" 
       aria-label={displayed}
     >{displayed}</p>
   )
