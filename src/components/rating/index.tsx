@@ -43,7 +43,7 @@ export function Rating (props: RatingProps) {
         min={0}
         max={max}
         value={value}
-        className='sr-only'
+        className='hidden'
         aria-label={`Avaliação: ${value} de ${max}`}
       >
       </meter>
