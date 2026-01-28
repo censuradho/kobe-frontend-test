@@ -32,7 +32,7 @@ export function TextField (props: TextFieldProps) {
         {...otherProps}
       />
       <button 
-        className="absolute right-4 cursor-pointer" aria-label="Enviar"
+        className="absolute right-4 cursor-pointer disabled:opacity-30" aria-label="Enviar"
         disabled={props.disabled}
       >
         <Send  />
