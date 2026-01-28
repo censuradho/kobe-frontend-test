@@ -31,7 +31,7 @@ export function ProductCard (props: ProductCardProps) {
 
   return (
     <article className={cn(
-      'bg-neutral-100 p-3 w-full md:max-w-86.5 rounded-xl',
+      'md:bg-neutral-100 p-3 w-full md:max-w-86.5 rounded-xl',
       'flex gap-2 items-start',
       'md:flex-col md:max-w-[168px] transition-opacity duration-500',
       'overflow-hidden',
