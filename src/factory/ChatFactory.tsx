@@ -3,7 +3,7 @@ import type {
   ChatEvent,
   ChatEventType,
 } from "@/models/chat";
-import { Fragment, useEffect, useRef, type ReactNode } from "react";
+import { useEffect, useRef, type ReactNode } from "react";
 
 import {
   AgentBubble,
@@ -53,15 +53,18 @@ export function ChatFactory(chats: UseChatReturn): ReactNode | null {
     ref.current?.scrollIntoView({ behavior: "smooth" });
   }, [chat.length]);
 
-  return chat?.map(event => (
-    <Fragment key={event.id}>
-      {components[event.type]?.(event as any, {
-        agent: {
-          onComplete: onAgentNext,
-        },
-      }) ?? null}
-      <div ref={ref} />
-    </Fragment>
-    
-  ))
+  return (
+    <ul className="flex flex-1 flex-col gap-4 py-6 md:pr-4 overflow-y-auto">
+      {chat?.map(event => (
+        <li key={event.id}>
+          {components[event.type]?.(event as any, {
+            agent: {
+              onComplete: onAgentNext,
+            },
+          }) ?? null}
+          <div ref={ref} />
+        </li>
+      ))}
+    </ul>
+  )
 }
