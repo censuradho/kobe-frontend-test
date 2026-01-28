@@ -9,7 +9,7 @@ export function UserBubble (props: UserBubbleProps) {
   return (
     <p 
       aria-label={message}
-      className="bg-primary max-w-[500px] rounded-lg rounded-tr-[2px] p-2 text-surface ml-auto"
+      className="bg-primary max-w-[290px] sm:max-w-[500px] rounded-lg rounded-tr-[2px] p-2 text-surface ml-auto"
     >{message}</p>
   )
 }
