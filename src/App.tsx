@@ -19,9 +19,7 @@ function App() {
             <Close />
           </button>
         </header>
-        <div className="flex flex-1 flex-col gap-4 py-6 md:pr-4 overflow-y-auto">
-          <ChatFactory {...chat} />
-        </div>
+        <ChatFactory {...chat} />
         <form 
           className="sticky bottom-0 pt-2"
           onSubmit={event => {
