@@ -1,15 +1,25 @@
 import { mockChat } from "@/mocks/products";
 import type { ChatEvent, ChatEventType } from "@/models/chat";
 import { useCallback, useState } from "react";
-import { useDelay } from "./useDelay";
+import { useDelay, type IDelay } from "../useDelay";
 
-export function useChat () {
+interface UseChatOptions {
+  useDelay: IDelay
+  data?: ChatEvent[]
+}
+
+export function useChat (props: UseChatOptions = { 
+  useDelay: useDelay,
+  data: mockChat
+}) {
+  const { useDelay, data } = props;
+
   const [step, setStep] = useState(0)
 
-  const chatStack: ChatEvent[] = mockChat.slice(0, step)
-  const current = mockChat[step - 1];
-  const next = mockChat[step];
-  const isLastChat = step >= mockChat.length
+  const chatStack: ChatEvent[] = data?.slice(0, step) || []
+  const current = data?.[step - 1];
+  const next = data?.[step];
+  const isLastChat = step >= (data?.length || 0)
   
   const onAutoNext = useCallback((
     current?: ChatEventType, 
@@ -32,9 +42,12 @@ export function useChat () {
     setStep(s => s + 1);
   }
   
-  const filteredChat = chatStack.filter((item, index) =>
-    item.type !== "typing" || index === step - 1
-  );
+  const filteredChat = chatStack.filter((item, index) => {
+    const isNotTyping = item.type !== "typing"
+    const isLastTyping = index === step - 1
+
+    return isNotTyping || isLastTyping
+  });
 
   useDelay(() => {
     onAutoNext(current?.type)
